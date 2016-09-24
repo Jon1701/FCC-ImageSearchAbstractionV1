@@ -1,0 +1,58 @@
+body {
+  margin: 15px;
+  background-color: #F5F6F7;
+  color: #333333;
+  font-family: Arial, sans-serif;
+  font-size: 100%;
+}
+
+.boxshadow {
+  box-shadow:0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+/*
+@media screen and (min-width: 792px) {
+  .panel {
+    width: 792px;
+    margin: 0 auto;
+  }
+}
+*/
+.panel {
+  background-color: #FFFFFF;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  //margin: 15px 0 15px 0;
+  padding: 20px;
+}
+
+// Disable text selection.
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+};
+
+// Align text center.
+.text-center {
+  text-align: center;
+};
+
+// Hide contents.
+.hidden {
+  display: none;
+};
+
+// Clear floats.
+.clearfix {
+  clear: both;
+};
+
+// Bold text.
+.bold {
+  font-weight: bold;
+};
