@@ -138,8 +138,14 @@ app.get('/search', function(req, res) {
             // Error check.
             if (err) { return next(err); };
 
-            // Send image search response back to client.
-            res.send(data);
+            // Send response back to client.
+            var response = {
+              q: searchTerms,           // Search terms
+              page: pageNum,            // Page number
+              results: data,            // Search results
+              num_results: data.length  // Number of results
+            };
+            res.send(response);
 
           }); // End document insert function.
 
