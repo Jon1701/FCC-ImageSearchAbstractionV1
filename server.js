@@ -3,8 +3,26 @@
 ////////////////////////////////////////////////////////////////////////////////
 var express = require('express');
 var app = express();
-
 var path = require('path');
+
+// Requests (SuperAgent)
+var request = require('superagent');
+
+// Library to connect to a mongodb instance.
+//var MongoClient = require('mongodb').MongoClient;
+
+// MongoDB options.
+var MONGO = {
+  host: process.env['MONGO_HOST'] || 'localhost',
+  port: process.env['MONGO_PORT'] || '27017',
+  database: 'ms-image-search-abstraction',
+  collection: 'recent',
+  credentials: {
+    username: 'APP_MS_IMAGE_SEARCH_ABSTRACTION',
+    password: process.env['APP_MS_IMAGE_SEARCH_ABSTRACTION']
+  }
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // Serve files from the ./dist folder.
@@ -15,7 +33,14 @@ app.use(express.static('dist'));
 // Handles search query from client.
 ////////////////////////////////////////////////////////////////////////////////
 app.get('/search', function(req, res) {
-  console.log(req.query)
+
+  // HTTP GET request to Imgur.
+  request('GET', 'https://api.imgur.com/3/gallery/search/')
+    .set('Authorization', 'Client-ID ' + process.env.CLIENT_ID)
+    .query({q: req.query.query})
+    .end(function(err, res) {
+      console.log(res)
+    })
 });
 
 ////////////////////////////////////////////////////////////////////////////////
