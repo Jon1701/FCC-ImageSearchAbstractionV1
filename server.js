@@ -46,10 +46,16 @@ app.get('/search', function(req, res) {
   var searchTerms = req.query.q;          // Search terms.
   var pageNum = parseInt(req.query.page); // Page number.
 
+  // If an invalid page number is given, of if the page number is 0,
+  // set it to page 1.
+  if (isNaN(pageNum) || pageNum == 0) {
+    pageNum = 1;
+  };
+
   // HTTP GET request to Imgur.
   request('GET', 'https://api.imgur.com/3/gallery/search/')
     .set('Authorization', 'Client-ID ' + process.env.CLIENT_ID) // Client id.
-    .query({q: searchTerms, page: pageNum})                     // Search terms and page offset.
+    .query({q: searchTerms, page: pageNum - 1})                     // Search terms and page offset.
     .end(function(err, response) {
 
       // Parse server response results into JSON.
