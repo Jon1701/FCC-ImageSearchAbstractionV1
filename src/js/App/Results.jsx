@@ -17,8 +17,11 @@ export default class Results extends React.Component {
       'hidden': this.props.results == null  // Hide if no search was made.
     });
 
+    // Variable to store rendered search results.
     var html;
 
+    // If search results are present, build an array of cards
+    // containing images returned by the search.
     if (this.props.results) {
 
       // Unwrap this.props.results.
@@ -27,6 +30,7 @@ export default class Results extends React.Component {
       var page = this.props.results.page;
       var query = this.props.results.q;
 
+      // Build array of cards containing images returned by search.
       html = results.map((result, idx, arr) => {
         return (
           <div key={idx} className="panel boxshadow clear-margin col-xs-6 col-sm-6 col-md-3 col-lg-3">
@@ -35,7 +39,7 @@ export default class Results extends React.Component {
             </a>
           </div>
         );
-      });
+      }); // End map.
     };
 
     return (

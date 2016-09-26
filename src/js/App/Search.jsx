@@ -1,6 +1,8 @@
 // React.
 import React from 'react';
 
+import Results from './Results.jsx';
+
 // Requests.
 var request = require('superagent');
 
@@ -10,8 +12,14 @@ export default class Search extends React.Component {
   constructor(props) {
     super(props);
 
+    // Default state.
+    this.state = {
+      latestResults: null // Most recent search results.
+    };
+
     // Bind methods to component instance.
     this.submitSearch = this.submitSearch.bind(this);
+
   };
 
   // Submit search terms to the server.
@@ -39,27 +47,35 @@ export default class Search extends React.Component {
       .query({ q: q, page: pageNum})
       .end(function(err, res) {
 
-        // Store results in parent state.
-        thisComp.props.updateSearchResults(JSON.parse(res.text));
+        // Store search results in component state.
+        thisComp.setState({
+          latestResults: JSON.parse(res.text)
+        });
 
-      });
+      });// End request.
 
   };
 
   // Component render.
   render() {
     return (
-      <div className="panel boxshadow">
-        <div>
-          Search
+      <div>
+        <div className="panel boxshadow">
+          <div>
+            Search
+          </div>
+
+          <div>
+            <form id="form-search">
+              <input id="search-box" type="text" defaultValue='star trek'/>
+              <input id="page-box" type="text" defaultValue="1"/>
+              <button type="submit" onClick={this.submitSearch}>Search</button>
+            </form>
+          </div>
+          
         </div>
-        <div>
-          <form id="form-search">
-            <input id="search-box" type="text" defaultValue='star trek'/>
-            <input id="page-box" type="text" defaultValue="1"/>
-            <button type="submit" onClick={this.submitSearch}>Search</button>
-          </form>
-        </div>
+
+        <Results results={this.state.latestResults}/>
       </div>
     );
   };
