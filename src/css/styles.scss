@@ -52,7 +52,24 @@ body {
   clear: both;
 };
 
+.img-responsive {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.thumbnail {
+  object-fit: cover;
+  height: 300px;
+}
+
+.clear-margin {
+  margin: 2px 0 2px 0;
+}
+
 // Bold text.
 .bold {
   font-weight: bold;
 };
+
+@import '_responsive-grid';
