@@ -20,16 +20,27 @@ export default class Search extends React.Component {
     // Prevent default actions.
     e.preventDefault();
 
-    // Get the text box.
-    var textbox = document.querySelector('#form-search > input[type=text]');
+    // Get the input field containing search terms.
+    var searchBox = document.getElementById('search-box');
 
-    // Get the search query.
-    var q = textbox.value;
+    // Get the input field containing the page number.
+    var pageBox = document.getElementById('page-box');
 
+    // Get the search query, and the page number.
+    var q = searchBox.value;
+    var pageNum = pageBox.value;
+
+    // Maintain a reference to this component.
+    var thisComp = this;
+
+    // Access the /search enpoint, send search query and page number.
     request
       .get('/search')
-      .query({ query: q})
+      .query({ q: q, page: pageNum})
       .end(function(err, res) {
+
+        // Store results in parent state.
+        thisComp.props.updateSearchResults(JSON.parse(res.text));
 
       });
 
@@ -44,7 +55,8 @@ export default class Search extends React.Component {
         </div>
         <div>
           <form id="form-search">
-            <input type="text" defaultValue='hello world'/>
+            <input id="search-box" type="text" defaultValue='star trek'/>
+            <input id="page-box" type="text" defaultValue="1"/>
             <button type="submit" onClick={this.submitSearch}>Search</button>
           </form>
         </div>
