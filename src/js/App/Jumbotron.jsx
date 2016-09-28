@@ -11,8 +11,8 @@ export default class Jumbotron extends React.Component {
   // Component render.
   render() {
     return (
-      <div className="panel boxshadow">
-        Jumbotron
+      <div className="jumbotron panel boxshadow">
+        <h1 className="text-center">Imgur Search Service</h1>
       </div>
     );
   };
