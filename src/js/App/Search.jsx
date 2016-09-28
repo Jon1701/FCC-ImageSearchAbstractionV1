@@ -66,16 +66,13 @@ export default class Search extends React.Component {
     return (
       <div>
         <div className="panel boxshadow">
-          <div>
-            Search
-          </div>
 
-          <div>
-            <form id="form-search">
-              <input id="search-box" type="text" defaultValue='star trek'/>
-              <button type="submit" onClick={this.submitSearch}>Search</button>
-            </form>
-          </div>
+          <form id="form-search">
+            <div className="input-group">
+              <input id="search-box" type="text" placeholder="Enter some keywords" defaultValue="star trek"/>
+              <button type="submit" onClick={this.submitSearch}><i className="icon-search"></i></button>
+            </div>
+          </form>
 
         </div>
 
