@@ -22,21 +22,8 @@ export default class Search extends React.Component {
 
   };
 
-  // Submit search terms to the server.
-  submitSearch(e) {
-
-    // Prevent default actions.
-    e.preventDefault();
-
-    // Get the input field containing search terms.
-    var searchBox = document.getElementById('search-box');
-
-    // Get the input field containing the page number.
-    var pageBox = document.getElementById('page-box');
-
-    // Get the search query, and the page number.
-    var q = searchBox.value;
-    var pageNum = pageBox.value;
+  // Helper function to send request to server.
+  makeRequest(q, pageNum) {
 
     // Maintain a reference to this component.
     var thisComp = this;
@@ -53,6 +40,23 @@ export default class Search extends React.Component {
         });
 
       });// End request.
+  };
+
+  // Submit search terms to the server.
+  submitSearch(e) {
+
+    // Prevent default actions.
+    e.preventDefault();
+
+    // Get the input field containing search terms.
+    var searchBox = document.getElementById('search-box');
+
+    // Get the search query, and the page number.
+    var q = searchBox.value;
+    var pageNum = 1;
+
+    // Send request to server.
+    this.makeRequest(q, pageNum);
 
   };
 
@@ -68,11 +72,10 @@ export default class Search extends React.Component {
           <div>
             <form id="form-search">
               <input id="search-box" type="text" defaultValue='star trek'/>
-              <input id="page-box" type="text" defaultValue="1"/>
               <button type="submit" onClick={this.submitSearch}>Search</button>
             </form>
           </div>
-          
+
         </div>
 
         <Results results={this.state.latestResults}/>
