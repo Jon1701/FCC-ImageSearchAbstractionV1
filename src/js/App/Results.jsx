@@ -40,9 +40,9 @@ export default class Results extends React.Component {
 
         // Return HTML.
         return (
-          <div key={key} className="col-xs-4">
+          <div key={key}>
             <a href={result.link} target="blank">
-              <img src={result.link} className="img-responsive"/>
+              <img src={result.link}/>
             </a>
           </div>
         );
