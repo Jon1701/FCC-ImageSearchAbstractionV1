@@ -10,19 +10,10 @@ body {
   box-shadow:0 2px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
-/*
-@media screen and (min-width: 792px) {
-  .panel {
-    width: 792px;
-    margin: 0 auto;
-  }
-}
-*/
 .panel {
   background-color: #FFFFFF;
   margin-top: 15px;
   margin-bottom: 15px;
-  //margin: 15px 0 15px 0;
   padding: 20px;
 }
 
@@ -60,9 +51,11 @@ body {
 
 .thumbnail {
   object-fit: cover;
-  height: 300px;
+  width: 300px;
+  height: 200px;
 }
 
+// Reduce top-bottom margins to 2px each.
 .clear-margin {
   margin: 2px 0 2px 0;
 }
@@ -72,4 +65,17 @@ body {
   font-weight: bold;
 };
 
+// Remove padding.
+.nopadding {
+  padding: 0 !important;
+};
+
+
+
 @import '_responsive-grid';
+@import '_form';
+@import '_icons';
+
+
+@import '_Jumbotron';
+@import '_PaginationControls';
