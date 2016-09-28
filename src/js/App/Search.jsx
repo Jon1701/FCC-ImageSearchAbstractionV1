@@ -19,6 +19,7 @@ export default class Search extends React.Component {
 
     // Bind methods to component instance.
     this.submitSearch = this.submitSearch.bind(this);
+    this.makeRequest = this.makeRequest.bind(this);
 
   };
 
@@ -78,7 +79,7 @@ export default class Search extends React.Component {
 
         </div>
 
-        <Results results={this.state.latestResults}/>
+        <Results results={this.state.latestResults} makeRequest={this.makeRequest}/>
       </div>
     );
   };
