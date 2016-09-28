@@ -64,6 +64,13 @@ gulp.task('html', function() {
     .pipe(gulp.dest(destPath))
 });
 
+// Move .html.
+gulp.task('media', function() {
+  gulp.src(srcPath + 'media/**/*')
+    .pipe(gulp.dest(destPath + 'media/'));
+});
+
+
 // Compile .scss and move.
 gulp.task('stylesheets', function() {
   gulp.src(srcPath + 'css/**/*')
@@ -93,5 +100,5 @@ gulp.task('server', function() {
 ////////////////////////////////////////////////////////////////////////////////
 // Group tasks.
 ////////////////////////////////////////////////////////////////////////////////
-gulp.task('default', ['server', 'watch', 'jsx', 'html', 'stylesheets']);
-gulp.task('build', ['jsx', 'html', 'stylesheets']);
+gulp.task('default', ['server', 'watch', 'jsx', 'html', 'media', 'stylesheets']);
+gulp.task('build', ['jsx', 'html', 'media', 'stylesheets']);
