@@ -14,4 +14,7 @@
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale
 }
-.icon-search:before{content:'\0041';}
+
+.icon-arrow-left:before{content:'\0041';}
+.icon-arrow-right:before{content:'\0042';}
+.icon-search:before{content:'\0043';}
